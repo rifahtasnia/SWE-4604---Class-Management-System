@@ -1,2 +1,19 @@
-# SWE-4604---Class-Management-System
-SWE 4604 -  Software Testing and Quality Assurance Lab 
+NOTE: The original code don't belong to us. We are using this source code only for educational testing purpose.
+
+# Class Management Software
+
+> A software for coaching classes
+
+## Features:
+* Store student and lecturer data
+* Manage batches
+* Create weekly timetables with an easy drag-n-drop interface
+* Reminders
+* Attendance tracking
+* Budget logging
+
+## Demo
+![Demo](./Screenshots/Demo.gif)
+
+### Note
+Copy or create a symlink to the Database directory in bin\Debug to access the debug database.

@@ -1,0 +1,268 @@
+﻿<Controls:MetroWindow x:Class="Class_Management.MainWindow"
+                      x:Name="mainWindow"
+                      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                      xmlns:Controls="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
+                      xmlns:Dialogs="clr-namespace:MahApps.Metro.Controls.Dialogs;assembly=MahApps.Metro"
+                      xmlns:IconPacks="http://metro.mahapps.com/winfx/xaml/iconpacks"
+                      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+                      xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+                      mc:Ignorable="d"
+                      d:DesignHeight="900" d:DesignWidth="1600"
+                      BorderBrush="Transparent"
+                      BorderThickness="0"
+                      GlowBrush="Black"
+                      TitlebarHeight="35"
+                      NonActiveWindowTitleBrush="Gray"
+                      IconOverlayBehavior="Always"
+                      LeftWindowCommandsOverlayBehavior="Never"
+                      ResizeMode="CanMinimize"
+                      RightWindowCommandsOverlayBehavior="Always"
+                      WindowStartupLocation="CenterScreen"
+                      Title="Class Management"
+                      FontSize="13"
+                      Loaded="mainWindow_Loaded"
+                      Unloaded="mainWindow_Unloaded"
+                      Height="{Binding Source={x:Static SystemParameters.PrimaryScreenHeight}}"
+                      Width="{Binding Source={x:Static SystemParameters.PrimaryScreenWidth}}"
+                      TitleAlignment="Center">
+    <Controls:MetroWindow.Resources>
+
+        <ResourceDictionary>
+            <!--Setting style for TransparentBtn(x:key) button(target type)-->
+            <Style x:Key="TransparentBtn"
+                   TargetType="{x:Type Button}"
+                   BasedOn="{StaticResource MetroFlatButton}">
+                <Setter Property="Background" Value="Transparent" />
+                <Setter Property="BorderBrush" Value="Transparent" />
+                <Setter Property="Focusable" Value="False" />
+                <Setter Property="FontSize" Value="{StaticResource FlatButtonFontSize}" />
+                <Setter Property="Foreground" Value="White" />
+                <Setter Property="Height" Value="40" />
+                <Setter Property="Margin" Value="0 10" />
+            </Style>
+
+            <!--Setting style for main flyout(x:key) button(target type)-->
+            <Style x:Key="FlyoutBtn"
+                   TargetType="{x:Type Button}"
+                   BasedOn="{StaticResource TransparentBtn}">
+                <EventSetter Event="Click" Handler="ToggleSubFlyouts" />
+            </Style>
+
+            <!--Setting style for sub flyouts(x:key) button(target type)-->
+            <Style x:Key="SubFlyoutBtn"
+                   TargetType="{x:Type Button}"
+                   BasedOn="{StaticResource TransparentBtn}">
+                <EventSetter Event="Click" Handler="HandleSubFlyouts" />
+            </Style>
+
+            <Style x:Key="FlyoutStackpanel" TargetType="StackPanel">
+                <Setter Property="Margin" Value="10,20,0,0" />
+            </Style>
+
+            <!--Reminder-->
+            <Style x:Key="ReminderRowStyle" TargetType="ListBoxItem">
+                <Setter Property="Background" Value="White" />
+                <Setter Property="Foreground" Value="RoyalBlue" />
+                <Setter Property="Margin" Value="0" />
+                <Setter Property="Height" Value="40" />
+                <Setter Property="FontSize" Value="18" />
+                <Setter Property="HorizontalContentAlignment" Value="Center" />
+            </Style>
+
+            <Style x:Key="AddReminderBtnStyle" TargetType="Button" BasedOn="{StaticResource MetroFlatButton}">
+                <Setter Property="Background" Value="RoyalBlue" />
+                <Setter Property="Foreground" Value="White" />
+                <Setter Property="FontSize" Value="14" />
+                <Setter Property="Height" Value="40" />
+                <Setter Property="Margin" Value="0 0 5 0" />
+            </Style>
+
+            <Style x:Key="MainTileStyle" TargetType="Controls:Tile">
+                <Setter Property="Height" Value="auto" />
+                <Setter Property="Width" Value="auto" />
+                <Setter Property="Margin" Value="10" />
+                <Setter Property="Background" Value="#00897B" />
+                <EventSetter Event="Click" Handler="HandleTileClick" />
+            </Style>
+
+            <Style x:Key="MainTileLabelStyle" TargetType="Label">
+                <Setter Property="Foreground" Value="White"></Setter>
+                <Setter Property="FontSize" Value="24" />
+            </Style>
+
+            <!-- About us dialog -->
+            <Dialogs:CustomDialog x:Key="AboutUsDialog"
+                                  x:Name="AboutUsDialog"
+                                  Height="330"
+                                  FontSize="{StaticResource DialogMessageFontSize}">
+                <StackPanel Orientation="Vertical">
+                    <TextBlock FontSize="40" Height="70" Foreground="#FF008BFF" FontFamily="Microsoft JhengHei">CMS</TextBlock>
+                    <TextBlock>Class Management Software</TextBlock>
+                    <TextBlock>Version 1.0.0</TextBlock>
+                    <TextBlock>Copyright © 2016 StudyLeague Education Services</TextBlock>
+                    <TextBlock>
+                        Visit us at: 
+                        <Hyperlink NavigateUri="http://www.studyleague.com"
+                                   RequestNavigate="Hyperlink_RequestNavigate">
+                            StudyLeague
+                        </Hyperlink>
+                    </TextBlock>
+                    <TextBlock Height="40"></TextBlock>
+                    <Button Style="{StaticResource MetroFlatButton}"
+                            x:Name="AboutDialogClose"
+                            Content="Close"
+                            Width="70"
+                            HorizontalAlignment="Right"
+                            Margin="0 10"
+                            Click="HideDialog"/>
+                </StackPanel>
+            </Dialogs:CustomDialog>
+
+            <Dialogs:CustomDialog x:Key="ErrorDialog"
+                                  x:Name="ErrorDialog"
+                                  Height="200"
+                                  FontSize="20">
+                <Viewbox>
+                    <Grid Height="180" Width="900">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="80" />
+                            <RowDefinition Height="auto" />
+                        </Grid.RowDefinitions>
+                        <TextBlock x:Name="message_text" Grid.Row="0" FontSize="20" />
+                        <Button Style="{StaticResource MetroFlatButton}"
+                            x:Name="ErrorDialogClose"
+                            Content="OK" Width="70" Height="35"
+                            HorizontalAlignment="Right" VerticalAlignment="Top"
+                            Margin="0,10,20,0" Grid.Row="1"
+                            Click="HideDialog" />
+                    </Grid>
+                </Viewbox>
+            </Dialogs:CustomDialog>
+        </ResourceDictionary>
+
+    </Controls:MetroWindow.Resources>
+
+    <!--Menu button-->
+    <Controls:MetroWindow.LeftWindowCommands>
+        <Controls:WindowCommands ShowSeparators="False">
+            <Button Click="ToggleMainFlyout" >
+                <IconPacks:PackIconMaterial x:Name="MenuIcon" Kind="Menu" Height="20" Width="20"/>
+            </Button>
+            <Label Foreground="White" Background="Transparent" FontSize="14" Content="MENU" VerticalAlignment="Center" />
+        </Controls:WindowCommands>
+    </Controls:MetroWindow.LeftWindowCommands>
+
+    <!--settings and about us button-->
+    <Controls:MetroWindow.RightWindowCommands>
+        <Controls:WindowCommands ShowSeparators="False">
+            <Button Content="Tools" Click="ToggleTools"/>
+            <Button Content="About" Click="ShowAbout" />
+            <Button Padding="10" Foreground="Yellow">
+                <IconPacks:PackIconMaterial Kind="MessageAlert" />
+            </Button>
+        </Controls:WindowCommands>
+    </Controls:MetroWindow.RightWindowCommands>
+
+
+    <Controls:MetroWindow.Flyouts>
+        <Controls:FlyoutsControl >
+            <Controls:Flyout x:Name="MainFlyout" IsModal="True" Position="Top" Height="80" CloseButtonVisibility="Visible">
+                <StackPanel Orientation="Horizontal" x:Name="MainFlyoutPanel" Style="{StaticResource FlyoutStackpanel}">
+                    <Button x:Name="Student" Content="Student" Style="{StaticResource FlyoutBtn}" />
+                    <Button x:Name="Teacher" Content="Teacher" Style="{StaticResource FlyoutBtn}" />
+                    <Button x:Name="Batch" Content="Batch" Style="{StaticResource SubFlyoutBtn}" />
+                    <Button x:Name="WeeklyTimetable" Content="Time Table" Style="{StaticResource SubFlyoutBtn}" />
+                    <Button x:Name="Attendance" Content="Attendance" Style="{StaticResource SubFlyoutBtn}" />
+                    <Button x:Name="Budget" Content="Budget" Style="{StaticResource SubFlyoutBtn}" />
+                    <Button x:Name="CallData" Content="Call Data" Style="{StaticResource SubFlyoutBtn}" />
+                </StackPanel>
+            </Controls:Flyout>
+            <Controls:Flyout x:Name="StudentFlyout" Position="Top" Theme="Accent" CloseButtonVisibility="Visible" Height="80">
+                <StackPanel Orientation="Horizontal" Style="{StaticResource FlyoutStackpanel}">
+                    <Button x:Name="AddStudent" Content="Add Student" Style="{StaticResource SubFlyoutBtn}" />
+                    <Button x:Name="ViewStudent" Content="View Student" Style="{StaticResource SubFlyoutBtn}" />
+                </StackPanel>
+            </Controls:Flyout>
+            <Controls:Flyout x:Name="TeacherFlyout" Position="Top" Theme="Accent" CloseButtonVisibility="Visible" Height="80">
+                <StackPanel Orientation="Horizontal" Style="{StaticResource FlyoutStackpanel}">
+                    <Button x:Name="AddTeacher" Content="Add Teacher" Style="{StaticResource SubFlyoutBtn}" />
+                    <Button x:Name="ViewTeacher" Content="View Teacher" Style="{StaticResource SubFlyoutBtn}" />
+                </StackPanel>
+            </Controls:Flyout>
+            <Controls:Flyout x:Name="TimetableFlyout" Position="Top" Theme="Accent" CloseButtonVisibility="Hidden" Height="80">
+                <StackPanel Orientation="Horizontal" Style="{StaticResource FlyoutStackpanel}">
+                    <Button x:Name="DailyTimetable" Content="Daily Timetable" Style="{StaticResource SubFlyoutBtn}" />
+                    <Button x:Name="WeeklyTimetable1" Content="Weekly Timetable" Style="{StaticResource SubFlyoutBtn}" />
+                </StackPanel>
+            </Controls:Flyout>
+            <Controls:Flyout x:Name="ToolsFlyout" Header="Tools" Position="Right" Theme="Light" IsModal="True">
+            </Controls:Flyout>
+            <Controls:Flyout x:Name="LoginFlyout" Background="MediumSeaGreen" CloseButtonVisibility="Collapsed" 
+                             IsModal="True" Position="Bottom" Theme="Light" IsOpen="True" >
+            </Controls:Flyout>
+        </Controls:FlyoutsControl>
+    </Controls:MetroWindow.Flyouts>
+
+    <Viewbox>
+        <Grid Background="AliceBlue" Height="855" Width="1590">
+            <Grid Margin="2,3,2,38">
+                <Grid.RowDefinitions></Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="1*" />
+                    <ColumnDefinition Width="4*" />
+                    <ColumnDefinition Width="1*" />
+                </Grid.ColumnDefinitions>
+                <StackPanel Grid.Column="0" Background="Beige">
+                    <Label FontSize="20" Foreground="#3F51B5" Margin="10">Here's Today's Timetable</Label>
+                    <ListBox x:Name="TodaysTimetableListBox" Margin="10 5"></ListBox>
+                </StackPanel>
+                <Grid Margin="10 100" Background="White" Grid.Column="1">
+                    <Grid Margin="50">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="1*" />
+                            <RowDefinition Height="1*" />
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="1*" />
+                            <ColumnDefinition Width="1*" />
+                        </Grid.ColumnDefinitions>
+                        <Controls:Tile x:Name="ViewStudentTile" Grid.Column="0" Grid.Row="0" Style="{StaticResource MainTileStyle}">
+                            <Label Style="{StaticResource MainTileLabelStyle}">Student</Label>
+                        </Controls:Tile>
+                        <Controls:Tile x:Name="ViewTeacherTile" Grid.Column="1" Grid.Row="0" Style="{StaticResource MainTileStyle}">
+                            <Label Style="{StaticResource MainTileLabelStyle}">Teacher</Label>
+                        </Controls:Tile>
+                        <Controls:Tile x:Name="BatchTile" Grid.Column="0" Grid.Row="1" Style="{StaticResource MainTileStyle}">
+                            <Label Style="{StaticResource MainTileLabelStyle}">Batch</Label>
+                        </Controls:Tile>
+                        <Controls:Tile x:Name="WeeklyTimetableTile" Grid.Column="1" Grid.Row="1" Style="{StaticResource MainTileStyle}">
+                            <Label Style="{StaticResource MainTileLabelStyle}">Timetable</Label>
+                        </Controls:Tile>
+                    </Grid>
+                </Grid>
+                <StackPanel Orientation="Vertical" Grid.Column="2">
+                    <Grid>
+                        <Viewbox>
+                            <Calendar x:Name="ReminderCalendar" 
+                                  Height="180" Width="180" 
+                                  BorderBrush="Teal" 
+                                  SelectedDatesChanged="ReminderCalendar_SelectedDatesChanged"
+                                  HorizontalAlignment="Center" VerticalAlignment="Center">
+                            </Calendar>
+                        </Viewbox>
+                    </Grid>
+                    <ListBox x:Name="ReminderList"
+                         Background="Beige"
+                         BorderBrush="Black"
+                         BorderThickness="1">
+                    </ListBox>
+                </StackPanel>
+            </Grid>
+            <Grid x:Name="mainContent"  Margin="2,3,2,38" ></Grid>
+            <Grid x:Name="DialogSpace"  Margin="2,3,2,38" ></Grid>
+            <Grid VerticalAlignment="Bottom" Background="RoyalBlue" Height="35"></Grid>
+        </Grid>
+    </Viewbox>
+
+</Controls:MetroWindow>
