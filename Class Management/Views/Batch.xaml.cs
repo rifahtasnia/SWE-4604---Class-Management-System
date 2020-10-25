@@ -53,7 +53,7 @@ namespace Class_Management.Views
             try
             {
                 SQLiteConnection conn;
-                conn = new SQLiteConnection(@"Data Source=Database\MainDatabase.db;Version=3;");
+                conn = new SQLiteConnection(@"Data Source=D:\Software Testing and QA\Database\MainDatabase.db;Version=3;");
                 conn.Open();
                 string general_timing_from = from_h.Text + ":" + from_m.Text + ":" + from_ampm.Text;
                 string general_timing_to = to_h.Text + ":" + to_m.Text + ":" + to_ampm.Text;

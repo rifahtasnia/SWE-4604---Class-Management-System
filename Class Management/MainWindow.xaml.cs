@@ -19,7 +19,7 @@ namespace Class_Management
     /// </summary>
     public partial class MainWindow : MetroWindow
     {
-        SQLiteConnection conn = new SQLiteConnection(@"Data Source=Database\MainDatabase.db;Version=3;");
+        SQLiteConnection conn = new SQLiteConnection(@"Data Source=D:\Software Testing and QA\Database\MainDatabase.db;Version=3;");
 
         public MainWindow()
         {

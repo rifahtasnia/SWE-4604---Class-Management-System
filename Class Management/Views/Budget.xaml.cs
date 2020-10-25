@@ -14,7 +14,7 @@ namespace Class_Management.Views
     /// </summary>
     public partial class Budget : UserControl
     {
-        SQLiteConnection conn = new SQLiteConnection(@"Data Source=Database\MainDatabase.db;Version=3;");
+        SQLiteConnection conn = new SQLiteConnection(@"Data Source=D:\Software Testing and QA\Database\MainDatabase.db;Version=3;");
 
         public Budget()
         {

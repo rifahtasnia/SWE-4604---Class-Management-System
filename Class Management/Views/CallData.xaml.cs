@@ -35,7 +35,7 @@ namespace Class_Management.Views
             InitializeComponent();
         }
 
-        SQLiteConnection conn = new SQLiteConnection(@"Data Source=Database\MainDatabase.db;Version=3;");
+        SQLiteConnection conn = new SQLiteConnection(@"Data Source=D:\Software Testing and QA\Database\MainDatabase.db;Version=3;");
 
         private void UserControl_Loaded(object sender, RoutedEventArgs e)
         {
