@@ -108,7 +108,7 @@
                 <Label x:Name="label6" Content="Parent's Name"  Grid.Row="6" Margin="40,10,0,0" Style="{StaticResource formlabel}" />
                 <Label x:Name="label7" Content="Contact number" Grid.Row="7" Margin="40,10,0,0" Style="{StaticResource formlabel}" />
                 <Label x:Name="label8" Grid.Column="0" Grid.Row="2" Margin="44,42.4,0,8.4" Content="+880" Foreground="Teal" Background="White" HorizontalAlignment="Left" Width="40" VerticalContentAlignment="Center"/>
-                <Label x:Name="label9" Grid.Column="0" Grid.Row="7" Margin="44, 42,0,0" Content="+91" Foreground="Teal" Background="White" HorizontalAlignment="Left" VerticalAlignment="Top" Height="30" Width="40" VerticalContentAlignment="Center"/>
+                <Label x:Name="label9" Grid.Column="0" Grid.Row="7" Margin="44, 42,0,0" Content="+880&#xD;&#xA;" Foreground="Teal" Background="White" HorizontalAlignment="Left" VerticalAlignment="Top" Height="30" Width="40" VerticalContentAlignment="Center"/>
                 <Label x:Name="label14" Content="Other Details" Grid.Column="1" Grid.Row="4" Margin="40, 10" Style="{StaticResource formlabel}" />
                 <Label x:Name="label15" Content="Balance fees" Grid.Column="1" Grid.Row="5" Margin="40, 10" Style="{StaticResource formlabel}" />
 
