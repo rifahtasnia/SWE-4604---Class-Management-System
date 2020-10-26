@@ -107,7 +107,7 @@
                 <Label x:Name="label5" Content="Code for class"   Grid.Row="1" Margin="40,10,0,0" Style="{StaticResource formlabel}" Grid.Column="1" />
                 <Label x:Name="label6" Content="Subject"          Grid.Row="2" Margin="40,10,0,0" Style="{StaticResource formlabel}" Grid.Column="1" />
                 <Label x:Name="label7" Content="Timing for class" Grid.Row="3" Margin="40,10,0,0" Style="{StaticResource formlabel}" Grid.Column="1" />
-                <Label x:Name="label8" Grid.Column="0" Grid.Row="2" Margin="44,42,0,0" Content="+91" Foreground="RoyalBlue" Background="White" HorizontalAlignment="Left" VerticalAlignment="Top" VerticalContentAlignment="Center" Height="30" Width="40"/>
+                <Label x:Name="label8" Grid.Column="0" Grid.Row="2" Margin="44,42,0,0" Content="+880" Foreground="RoyalBlue" Background="White" HorizontalAlignment="Left" VerticalAlignment="Top" VerticalContentAlignment="Center" Height="30" Width="40"/>
 
                 <TextBox x:Name="teacher_name"       Margin="44,42,0,0" Grid.Row="1" Width="350" Style="{StaticResource formtextbox}" />
                 <TextBox x:Name="teacher_contact_no" Margin="84,42,0,0" Grid.Row="2" Width="120" Style="{StaticResource formtextbox}" MaxLength="10" />
