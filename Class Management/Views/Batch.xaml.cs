@@ -116,7 +116,7 @@ namespace Class_Management.Views
             try
             {
                 SQLiteConnection conn;
-                conn = new SQLiteConnection(@"Data Source=Database\MainDatabase.db;Version=3;");
+                conn = new SQLiteConnection(@"Data Source=D:\Software Testing and QA\Database\MainDatabase.db;Version=3;");
                 conn.Open();
                 string sql = ("select * from batch where batch_name='" + igotbatch + "'; ");
                 SQLiteCommand command = new SQLiteCommand(sql, conn);
@@ -154,7 +154,7 @@ namespace Class_Management.Views
             try
             {
                 SQLiteConnection conn;
-                conn = new SQLiteConnection(@"Data Source=Database\MainDatabase.db;Version=3;");
+                conn = new SQLiteConnection(@"Data Source=D:\Software Testing and QA\Database\MainDatabase.db;Version=3;");
                 conn.Open();
                 string sql = "SELECT * FROM subjects;";
                 SQLiteCommand command = new SQLiteCommand(sql, conn);
@@ -239,7 +239,7 @@ namespace Class_Management.Views
             try
             {
                 SQLiteConnection conn;
-                conn = new SQLiteConnection(@"Data Source=Database\MainDatabase.db;Version=3;");
+                conn = new SQLiteConnection(@"Data Source=D:\Software Testing and QA\Database\MainDatabase.db;Version=3;");
                 conn.Open();
                 string sql = "SELECT * FROM batch;";
                 SQLiteCommand command = new SQLiteCommand(sql, conn);
@@ -289,7 +289,7 @@ namespace Class_Management.Views
             try
             {
                 SQLiteConnection conn;
-                conn = new SQLiteConnection(@"Data Source=Database\MainDatabase.db;Version=3;");
+                conn = new SQLiteConnection(@"Data Source=D:\Software Testing and QA\Database\MainDatabase.db;Version=3;");
                 conn.Open();
                 int f1 = 0;
                 foreach (string ele in delete_list)

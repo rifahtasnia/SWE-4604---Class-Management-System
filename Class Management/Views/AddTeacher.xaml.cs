@@ -120,7 +120,7 @@ namespace Class_Management.Views
             try
             {
                 SQLiteConnection conn;
-                conn = new SQLiteConnection(@"Data Source=Database\MainDatabase.db;Version=3;");
+                conn = new SQLiteConnection(@"Data Source=D:\Software Testing and QA\Database\MainDatabase.db;Version=3;");
                 conn.Open();
                 string sql = ("select * from teacher where teacher_code='" + updateTeacher + "'; ");
                 SQLiteCommand command = new SQLiteCommand(sql, conn);
@@ -150,7 +150,7 @@ namespace Class_Management.Views
             try
             {
                 SQLiteConnection conn;
-                conn = new SQLiteConnection(@"Data Source=Database\MainDatabase.db;Version=3;");
+                conn = new SQLiteConnection(@"Data Source=D:\Software Testing and QA\Database\MainDatabase.db;Version=3;");
                 conn.Open();
                 string sql = "SELECT * FROM subjects;";
                 SQLiteCommand command = new SQLiteCommand(sql, conn);
@@ -174,7 +174,7 @@ namespace Class_Management.Views
             try
             {
                 SQLiteConnection conn;
-                conn = new SQLiteConnection(@"Data Source=Database\MainDatabase.db;Version=3;");
+                conn = new SQLiteConnection(@"Data Source=D:\Software Testing and QA\Database\MainDatabase.db;Version=3;");
                 conn.Open();
                 string sql = "SELECT teacher_name, teacher_code, teacher_subject FROM teacher;";
                 SQLiteCommand command = new SQLiteCommand(sql, conn);

@@ -102,7 +102,7 @@ namespace Class_Management.Views
             try
             {
                 SQLiteConnection conn;
-                conn = new SQLiteConnection(@"Data Source=Database\MainDatabase.db;Version=3;");
+                conn = new SQLiteConnection(@"Data Source=D:\Software Testing and QA\Database\MainDatabase.db;Version=3;");
                 conn.Open();
                 int f1 = 0;
                 foreach (string ele in delete_list)
@@ -173,7 +173,7 @@ namespace Class_Management.Views
                 else
                 {
                     SQLiteConnection conn;
-                    conn = new SQLiteConnection(@"Data Source=Database\MainDatabase.db;Version=3;");
+                    conn = new SQLiteConnection(@"Data Source=D:\Software Testing and QA\Database\MainDatabase.db;Version=3;");
                     conn.Open();
                     string sql = "SELECT * FROM teacher WHERE teacher_subject='" + sname + "';";
                     SQLiteCommand command = new SQLiteCommand(sql, conn);
@@ -198,7 +198,7 @@ namespace Class_Management.Views
             try
             {
                 SQLiteConnection conn;
-                conn = new SQLiteConnection(@"Data Source=Database\MainDatabase.db;Version=3;");
+                conn = new SQLiteConnection(@"Data Source=D:\Software Testing and QA\Database\MainDatabase.db;Version=3;");
                 conn.Open();
                 string sql = "SELECT subject FROM subjects;";
                 SQLiteCommand command = new SQLiteCommand(sql, conn);

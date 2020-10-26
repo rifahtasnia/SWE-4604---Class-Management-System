@@ -150,7 +150,7 @@ namespace Class_Management.Views
             try
             {
                 SQLiteConnection conn;
-                conn = new SQLiteConnection(@"Data Source=Database\MainDatabase.db;Version=3;");
+                conn = new SQLiteConnection(@"Data Source=D:\Software Testing and QA\Database\MainDatabase.db;Version=3;");
                 conn.Open();
                 string sql = ("select * from student where reg_no='" + updateStudent + "'; ");
                 SQLiteCommand command = new SQLiteCommand(sql, conn);
@@ -184,7 +184,7 @@ namespace Class_Management.Views
             try
             {
                 SQLiteConnection conn;
-                conn = new SQLiteConnection(@"Data Source=Database\MainDatabase.db;Version=3;");
+                conn = new SQLiteConnection(@"Data Source=D:\Software Testing and QA\Database\MainDatabase.db;Version=3;");
                 conn.Open();
                 string sql = "SELECT batch_name FROM batch;";
                 SQLiteCommand command = new SQLiteCommand(sql, conn);
