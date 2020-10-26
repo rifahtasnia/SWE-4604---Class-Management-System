@@ -20,5 +20,10 @@ namespace CMS_Test
         {
             Assert.AreEqual(1, 1);
         }
+        [Test]
+        public void Test3()
+        {
+            Assert.AreEqual(2, 2);
+        }
     }
 }
