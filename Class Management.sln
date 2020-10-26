@@ -1,9 +1,11 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 14
-VisualStudioVersion = 14.0.24720.0
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30517.126
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Class Management", "Class Management\Class Management.csproj", "{B4E829A8-386C-4A68-A95C-CFF89EB16EF3}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CMS_Test", "CMS_Test\CMS_Test.csproj", "{ADF99C81-88F8-45B9-8BD7-5E4571746A83}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,8 +17,15 @@ Global
 		{B4E829A8-386C-4A68-A95C-CFF89EB16EF3}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B4E829A8-386C-4A68-A95C-CFF89EB16EF3}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B4E829A8-386C-4A68-A95C-CFF89EB16EF3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{ADF99C81-88F8-45B9-8BD7-5E4571746A83}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{ADF99C81-88F8-45B9-8BD7-5E4571746A83}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{ADF99C81-88F8-45B9-8BD7-5E4571746A83}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{ADF99C81-88F8-45B9-8BD7-5E4571746A83}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {FD5635C8-FF97-4360-A91A-3322D49CF6B9}
 	EndGlobalSection
 EndGlobal
